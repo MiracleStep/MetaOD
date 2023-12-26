@@ -7,7 +7,7 @@ lines = []
 with open("imagelist.txt") as f:
     lines = f.readlines()
 
-for n in lines[0:1]:
+for n in lines[0:300]:
     n = n.strip()
     print("asa")
     print(os.system("which python"))
