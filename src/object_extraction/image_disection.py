@@ -2,7 +2,7 @@ import os
 import sys
 
 # python3 Step0_object_detection.py --trained_model=yolact_darknet53_54_800000.pth --score_threshold=0.3 --top_k=100 --image=images/dog.jpg # python3 Step1_extract_object.py --trained_model=yolact_darknet53_54_800000.pth --score_threshold=0.3 --top_k=100 --image=images/dog.jpg # python3 Step2_save_into_seperate.py --trained_model=yolact_darknet53_54_800000.pth --score_threshold=0.3 --top_k=100 --image=images/dog.jpg 
-
+# 对数据集进行分割
 lines = []
 with open("imagelist.txt") as f:
     lines = f.readlines()

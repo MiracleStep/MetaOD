@@ -3,6 +3,11 @@
 
 import os
 import shutil
+import sys
+sys.path.append('../')
+import object_refinement.refinement_process as RP
+import os.path
+from os import walk
 
 
 class cd:
@@ -16,23 +21,43 @@ class cd:
     def __exit__(self, etype, value, traceback):
         os.chdir(self.savedPath)
 
+# 删除和创建文件夹
+def clean():
+    print("clean")
+    # os.system("rm -rf ../object_extraction/result/*")
+    # os.system("rm -rf ../image_pool/")
+    # os.system("rm -rf ../object_pool/")
+    try:
+        shutil.rmtree("../object_extraction/result/")
+        shutil.rmtree("../image_pool/")
+        shutil.rmtree("../object_pool/")
+
+        os.mkdir("../image_pool/")
+        os.mkdir("../object_pool/")
+        os.mkdir("../object_extraction/result")
+        os.mkdir("../object_extraction/result/Step0_object_detection")
+        os.mkdir("../object_extraction/result/Step1_extract_object")
+        os.mkdir("../object_extraction/result/Step2_save_into_seperate")
+        os.mkdir("../object_extraction/result/pool")
+    except :
+        print("")
+
+# 进行对象分割，提取分割目标到目标池(object_pool)
 def process_object_extraction(images):
     # extract objects and save into pools 
     # let's randomly select N 
     # images from the COCO pool
     with cd("../object_extraction/"):
         for i in images:
-            os.system("python image_disection.py " + i)
+            pass
+            # os.system("python image_disection.py " + i)
 
-        # then we setup the pool structure for the second step 
+        # 生成目标池
         os.system("python image_cluster.py result/Step2_save_into_seperate/ result/pool/")
         os.system("mv result/pool/* ../object_pool/")
         os.system("mv result/Step2_save_into_seperate/* ../image_pool/")
 
-import sys
-sys.path.append('../')
-import object_refinement.refinement_process as RP
-
+# 目标改良
 def init_object_refinement():
     # refinement; clustering and so on
     # basically even if we skip this one, we still can 
@@ -41,11 +66,16 @@ def init_object_refinement():
     image_dir = "../image_pool/"
     RP.init(target_dir, image_dir)
 
+
+def valid_image(i):
+    # ../image_pool/000000313994/obj
+    i1 = i.split(".")[0]
+    return os.path.isfile("../image_pool/" + i1 + "/object.log")
+
+
 def process_object_refinement(i):
     return RP.process(i)
 
-
-from os import walk
 
 def get_obj_list(obj_name, i, c):
     print (obj_name, i, c)
@@ -69,7 +99,6 @@ def get_obj_list(obj_name, i, c):
         assert r
         return r
 
-import os.path
 
 def resize(label, lines):
     c = 0
@@ -118,34 +147,11 @@ def process_object_insertion(i, objects):
             #break
 
 
-def clean():
-    print("clean")
-    # os.system("rm -rf ../object_extraction/result/*")
-    # os.system("rm -rf ../image_pool/")
-    # os.system("rm -rf ../object_pool/")
-    try:
-        shutil.rmtree("../object_extraction/result/")
-        shutil.rmtree("../image_pool/")
-        shutil.rmtree("../object_pool/")
 
-        os.mkdir("../image_pool/")
-        os.mkdir("../object_pool/")
-        os.mkdir("../object_extraction/result")
-        os.mkdir("../object_extraction/result/Step0_object_detection")
-        os.mkdir("../object_extraction/result/Step1_extract_object")
-        os.mkdir("../object_extraction/result/Step2_save_into_seperate")
-        os.mkdir("../object_extraction/result/pool")
-    except :
-        print("")
-
-import os.path
-def valid_image(i):
-    # ../image_pool/000000313994/obj
-    i1 = i.split(".")[0]
-    return os.path.isfile("../image_pool/" + i1 + "/object.log") 
 
 def process():
-    clean()
+    # clean()
+
     # the image list contains randomly selected N images 
     # from the COCO test 2017 data set 
     with open("imagelist.txt") as f:
@@ -155,6 +161,7 @@ def process():
     return
 
     init_object_refinement()
+
     for i in images:
         if valid_image(i) == False:
             continue

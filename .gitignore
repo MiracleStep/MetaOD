@@ -33,6 +33,7 @@ MANIFEST
 *.manifest
 *.spec
 src/images/
+src/object_extraction/result/**
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
