@@ -1,1 +1,1 @@
-../../data/kite.png
+../images/test2017/000000003469.jpg

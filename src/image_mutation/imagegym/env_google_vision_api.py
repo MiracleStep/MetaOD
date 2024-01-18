@@ -57,6 +57,41 @@ def localize_objects(client, path):
 
     print (res)
     return res
+"""
+{
+  "responses": [
+    {
+      "localizedObjectAnnotations": [
+        {
+          "mid": "/m/01bqk0",
+          "name": "Bicycle wheel",
+          "score": 0.94234306,
+          "boundingPoly": {
+            "normalizedVertices": [
+              {
+                "x": 0.31524897,
+                "y": 0.78658724
+              },
+              {
+                "x": 0.44186485,
+                "y": 0.78658724
+              },
+              {
+                "x": 0.44186485,
+                "y": 0.9692919
+              },
+              {
+                "x": 0.31524897,
+                "y": 0.9692919
+              }
+            ]
+          }
+        },... 
+      ]
+    }
+  ]
+}
 
+"""
 # localize_objects("./wakeupcat.jpg")
 # localize_objects("../../../../../coco_test_2017/test2017/000000267860.png")

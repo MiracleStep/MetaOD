@@ -176,13 +176,13 @@ def process(ola):
                 # ok, we found one
                 for r1 in r:
                     idx += 1
-                    print "process ", i, "object", t, " mutation", idx
+                    print("process ", i, "object", t, " mutation", idx)
                     insert_image(ola, i, r1, idx)
 
 
 if __name__ == "__main__":
     ola = preprocess()
-    print ola
+    print(ola)
     # process(ola)
 
 

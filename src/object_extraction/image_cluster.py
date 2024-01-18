@@ -2,7 +2,7 @@
 
 # labels for clustering
 
-# 根据标签和分割的目标构建目标池
+# 根据标签和分割的目标构建目标池(object_pool)和图像池(image_pool)
 from os import walk
 
 import os
@@ -27,6 +27,7 @@ def label_collector(base):
                     os.system("mv " + dirpath + "/" + fn.replace(" ", "\ ") + " " + dirpath + "/" + fn.replace(" ", "-"))
                 s.add(label)
     return s
+
 
 def build_pool(base, pooldir):
     labels = label_collector(base) # 收集Step2_save_into_seperate文件夹内的标签。

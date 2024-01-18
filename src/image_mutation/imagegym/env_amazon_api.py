@@ -18,7 +18,7 @@ from PIL import Image, ImageDraw, ExifTags, ImageColor
 def localize_objects(path):
     # Change bucket and photo to your S3 Bucket and image.
     # path ='./kite.jpg'
- 
+
     client=boto3.client('rekognition')
 
     image = Image.open(open(path,'rb'))

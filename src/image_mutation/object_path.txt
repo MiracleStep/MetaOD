@@ -1,1 +1,1 @@
-../../data/bird.png
+./obj_1.png

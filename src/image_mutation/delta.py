@@ -1,5 +1,5 @@
 # implement the algorithm of delta debugging
-
+# ÔöÁ¿µ÷ÊÔ
 # we first randomly put object images around other images
 # until we find some issues.
 

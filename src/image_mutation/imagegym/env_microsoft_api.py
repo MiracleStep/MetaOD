@@ -9,8 +9,8 @@ from io import BytesIO
 
 def localize_objects(path):
     # Replace <Subscription Key> with your valid subscription key.
-    # subscription_key = "772867bc99ed49549a9739b8ee14226b"
-    subscription_key = "cb59ce55ac614ca5a494f75f51e6074a"
+    subscription_key = "772867bc99ed49549a9739b8ee14226b"
+    # subscription_key = "cb59ce55ac614ca5a494f75f51e6074a"
     assert subscription_key
 
     # time.sleep(1)

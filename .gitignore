@@ -4,6 +4,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+src/image_mutation/imagegym/model_data/yolov5_x.h5
+src/image_mutation/imagegym/model_data/yolov5_l.h5
+/src/image_mutation/imagegym/output.png
+/src/image_pool
+/src/object_pool
 # C extensions
 *.so
 
@@ -138,4 +143,5 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
 
