@@ -28,9 +28,9 @@ def clean():
     # os.system("rm -rf ../image_pool/")
     # os.system("rm -rf ../object_pool/")
     try:
-        shutil.rmtree("../object_extraction/result/")
-        shutil.rmtree("../image_pool/")
-        shutil.rmtree("../object_pool/")
+        shutil.rmtree("../object_extraction/result/", ignore_errors=True)
+        shutil.rmtree("../image_pool/", ignore_errors=True)
+        shutil.rmtree("../object_pool/", ignore_errors=True)
 
         os.mkdir("../image_pool/")
         os.mkdir("../object_pool/")
