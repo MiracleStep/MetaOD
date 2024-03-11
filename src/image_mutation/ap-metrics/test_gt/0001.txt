@@ -1,4 +1,13 @@
-person  284 639 0 419
-tvmonitor  0 239 64 276
-remote  297 360 56 165
-remote  271 314 330 369
+person  408 464 156 297
+person  384 400 172 207
+chair  290 352 217 319
+chair  410 442 221 307
+chair  361 413 219 314
+pottedplant  232 267 171 212
+diningtable  314 390 226 319
+tvmonitor  6 154 166 261
+tvmonitor  557 640 207 290
+refrigerator  490 513 172 287
+vase  166 186 232 267
+vase  549 587 299 400
+vase  349 362 205 230

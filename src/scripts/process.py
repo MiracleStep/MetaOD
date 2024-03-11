@@ -178,8 +178,11 @@ def process():
 # process()
 #
 if __name__ == '__main__': # 测试用
+    # process()
+    # exit(0)
     with open("imagelist.txt") as f:
         images = f.readlines()
+    images.sort()
     # 初始化对象细化和选择-建立数据库和哈希数据库、删除低分辨率或碎片图像。
     init_object_refinement()
     for i in images:

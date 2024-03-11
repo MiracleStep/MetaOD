@@ -3,7 +3,7 @@
 # we need one initial image and one object image 
 # then it paste the object image over the background 
 # with (x,y) provided by agent 
-
+import os
 import numpy as np
 import sys
 # 这个文件用于进行图像初始化和插入
@@ -42,6 +42,7 @@ def synthesized_imagepath(idx):
     path = base + str(idx) + ".png"
     return path
 
+
 # 调用函数insert_image()进行插入
 def mutate(x, y, idx):
     # paste ob over bg and synthesize a new image
@@ -57,4 +58,17 @@ def insert_image(x, y, idx):
     new_path = synthesized_imagepath(idx) # 插入图像保存的路径
     bg_img.save(new_path)
 
+    return new_path
+
+# 目标图像插入到背景图像函数，并保存到文件夹中
+def insert_image_and_save(x, y, idx):
+    output_dir = "../insert_saved_image"
+    os.makedirs(output_dir, exist_ok=True)
+    obj_img = Image.open(object_image_path(), 'r')
+    bg_img = Image.open(background_image_path())
+
+    bg_img.paste(obj_img.convert('RGBA'), (x, y), mask=obj_img.convert('RGBA'))
+    new_path = os.path.basename(background_image_path())
+    new_path = new_path.split(".")[0]
+    bg_img.save(os.path.join(output_dir, new_path + "_" + str(idx) + ".jpg"))
     return new_path

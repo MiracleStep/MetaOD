@@ -11,7 +11,7 @@ src/image_mutation/imagegym/model_data/yolov5_l.h5
 /src/object_pool
 # C extensions
 *.so
-!
+
 # Distribution / packaging
 .Python
 build/

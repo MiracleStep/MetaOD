@@ -426,12 +426,16 @@ class ENV(object):
             print("generate new image:", self.new_path)
             res = res0
 
-
         if (len(res) == 0) or self.compute_terminate_new(x, y, res) == True:
             # 如果检测结果边界框数量为0 or 检测出错误(计算预测结果的mAP值，如果不为100%，则return True表示模型检测出现问题。)
             return "win"
         else:
             return "lose" # 没有检测出错误
+
+    def do_insert_and_save(self, x, y, idx):
+        # 调用image.py插入图像，传入要插入图像位置的左上角坐标，保存路径为：./new_idx.png
+        self.new_path = I.insert_image_and_save(int(x - self.obj_nrows / 2), int(y - self.obj_ncols / 2), idx)
+        print("generate new image:", self.new_path)
 
 
 if __name__ == "__main__":
